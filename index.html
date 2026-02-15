@@ -1,28 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Love</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valentine's Love</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="heart" id="heart"></div>
-    
-    <div class="image-container" id="imageContainer">
-        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=200&h=200&fit=crop" class="image slide-left" alt="Image 1">
-        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&h=200&fit=crop" class="image slide-left" alt="Image 2">
-        <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=200&h=200&fit=crop" class="image slide-left" alt="Image 3">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" class="image slide-right" alt="Image 4">
-        <img src="https://images.unsplash.com/photo-1502164394585-d99a11b371e5?w=200&h=200&fit=crop" class="image slide-right" alt="Image 5">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" class="image slide-right" alt="Image 6">
-    </div>
-    
-    <div id="message">
-        <h1>Happy Valentine's Day! ❤️</h1>
-        <p>Wishing you a day filled with love, joy, and endless moments of happiness together.</p>
+  <!-- Big red heart -->
+  <div id="heart" class="heart" role="button" aria-label="Click to celebrate love"></div>
+
+  <!-- Images that will slide in -->
+  <div class="images-row" aria-hidden="true">
+    <div class="images-left">
+      <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600" alt="Left 1" class="image slide-left">
+      <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600" alt="Left 2" class="image slide-left">
+      <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600" alt="Left 3" class="image slide-left">
     </div>
 
-    <script src="script.js"></script>
+    <div class="images-right">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="Right 1" class="image slide-right">
+      <img src="https://images.unsplash.com/photo-1502164394585-d99a11b371e5?w=600" alt="Right 2" class="image slide-right">
+      <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600" alt="Right 3" class="image slide-right">
+    </div>
+  </div>
+
+  <!-- Love message (below — becomes visible when page is scrollable) -->
+  <main id="message" tabindex="-1">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p>
+      To my dearest one — every moment with you is a gift. I love you more than words can say.
+      May today and every day bring us closer, full of laughter, warmth, and endless memories.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
