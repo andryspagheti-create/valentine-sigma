@@ -3,51 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Heart</title>
+    <title>Valentine's Love</title>
     <style>
         body {
-            background-color: gray;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
+            background-color: #d3d3d3;
+            font-family: Arial, sans-serif;
             overflow: hidden;
+            padding: 0;
+            margin: 0;
         }
         .heart {
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 100px;
             height: 100px;
-            background: red;
-            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 70%, 0% 100%, 0% 35%);
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 80%, 0% 100%, 0% 35%);
+            transform: translate(-50%, -50%);
+            animation: float 2s infinite;
         }
         @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-50px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+            100% { transform: translate(-50%, -50%) translateY(0); }
         }
-        .sliding-image {
+        .image-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .image {
             position: absolute;
-            left: -200px;
-            top: 10%;
-            animation: slide-in 2s forwards;
+            width: 200px;
+            opacity: 0;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
         }
-        @keyframes slide-in {
-            to {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        .slide-left {
+            left: -200px;
+            animation-name: slideInLeft;
+        }
+        .slide-right {
+            right: -200px;
+            animation-name: slideInRight;
+        }
+        @keyframes slideInLeft {
+            0% { left: -200px; opacity: 0; }
+            100% { left: 20%; opacity: 1; }
+        }
+        @keyframes slideInRight {
+            0% { right: -200px; opacity: 0; }
+            100% { right: 20%; opacity: 1; }
+        }
+        #message {
+            height: 150vh;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: scroll;
+            text-align: center;
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <img src="your-image-url.jpg" alt="Sliding Image" class="sliding-image">
-    <div class="heart"></div>
+    <div class="heart" onclick="this.style.animation='none'; this.style.top='0';"></div>
+    <div class="image-container">
+        <img src="image1.jpg" class="image slide-left" style="animation-delay: 0.25s;" alt="Image 1">
+        <img src="image2.jpg" class="image slide-left" style="animation-delay: 0.5s;" alt="Image 2">
+        <img src="image3.jpg" class="image slide-left" style="animation-delay: 0.75s;" alt="Image 3">
+        <img src="image4.jpg" class="image slide-right" style="animation-delay: 0.25s;" alt="Image 4">
+        <img src="image5.jpg" class="image slide-right" style="animation-delay: 0.5s;" alt="Image 5">
+        <img src="image6.jpg" class="image slide-right" style="animation-delay: 0.75s;" alt="Image 6">
+    </div>
+    <div id="message">
+        <h1>Happy Valentine's Day!</h1>
+        <p>Wishing you a day filled with love and joy.</p>
+    </div>
 </body>
 </html>
