@@ -1,1 +1,91 @@
-<button class="heart-button"></button>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heart Button with Sliding Image</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Heart Button */
+  .heart-button {
+    position: relative;
+    width: 200px;
+    height: 180px;
+    background-color: red;
+    transform: rotate(-45deg);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+  }
+
+  .heart-button::before,
+  .heart-button::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    background-color: red;
+    border-radius: 50%;
+  }
+
+  .heart-button::before {
+    top: -100px;
+    left: 0;
+  }
+
+  .heart-button::after {
+    left: 100px;
+    top: 0;
+  }
+
+  .heart-button:hover {
+    transform: rotate(-45deg) scale(1.1);
+    background-color: #ff3333;
+  }
+
+  .heart-button:active {
+    transform: rotate(-45deg) scale(0.95);
+  }
+
+  /* Sliding Image */
+  .slide-image {
+    position: absolute;
+    left: -400px; /* start off-screen */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: auto;
+    transition: left 0.8s ease;
+    z-index: 1;
+  }
+
+  .slide-image.show {
+    left: 50px; /* final position on screen */
+  }
+</style>
+</head>
+<body>
+
+<button class="heart-button" id="heartBtn"></button>
+<img src="https://via.placeholder.com/300x200.png?text=Hello!" alt="Sliding Image" class="slide-image" id="slideImg">
+
+<script>
+  const button = document.getElementById('heartBtn');
+  const image = document.getElementById('slideImg');
+
+  button.addEventListener('click', () => {
+    image.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
