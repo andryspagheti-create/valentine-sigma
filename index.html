@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,9 +7,6 @@
   body {
     margin: 0;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #f8f8f8;
     overflow: hidden;
     position: relative;
@@ -16,11 +14,13 @@
 
   /* Heart Button */
   .heart-button {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
     width: 200px;
     height: 180px;
     background-color: red;
-    transform: rotate(-45deg);
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -48,28 +48,28 @@
   }
 
   .heart-button:hover {
-    transform: rotate(-45deg) scale(1.1);
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
     background-color: #ff3333;
   }
 
   .heart-button:active {
-    transform: rotate(-45deg) scale(0.95);
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0.95);
   }
 
-  /* Sliding Image */
+  /* Sliding Image from top-left */
   .slide-image {
     position: absolute;
-    left: -400px; /* start off-screen */
-    top: 50%;
-    transform: translateY(-50%);
+    top: -300px;   /* start above the screen */
+    left: -400px;  /* start left off-screen */
     width: 300px;
     height: auto;
-    transition: left 0.8s ease;
+    transition: all 0.8s ease;
     z-index: 1;
   }
 
   .slide-image.show {
-    left: 50px; /* final position on screen */
+    top: 20px;    /* final position from top */
+    left: 20px;   /* final position from left */
   }
 </style>
 </head>
