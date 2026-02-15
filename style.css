@@ -7,42 +7,39 @@ body {
     margin: 0;
 }
 
-/* Heart button */
-.heart-button {
+.heart {
     position: relative;
-    width: 150px;
-    height: 135px;
-    background-color: red;
+    width: 120px;
+    height: 120px;
+    background: red;
     border: none;
     cursor: pointer;
     transform: rotate(-45deg);
     transition: transform 0.2s ease;
 }
 
-/* Top left circle */
-.heart-button::before,
-.heart-button::after {
+/* top circles */
+.heart::before,
+.heart::after {
     content: "";
     position: absolute;
-    width: 150px;
-    height: 135px;
-    background-color: red;
+    width: 120px;
+    height: 120px;
+    background: red;
     border-radius: 50%;
 }
 
-/* Left circle */
-.heart-button::before {
-    top: -75px;
+.heart::before {
+    top: -60px;
     left: 0;
 }
 
-/* Right circle */
-.heart-button::after {
-    left: 75px;
+.heart::after {
+    left: 60px;
     top: 0;
 }
 
-/* Click animation */
-.heart-button:active {
+/* click effect */
+.heart:active {
     transform: rotate(-45deg) scale(1.1);
 }
