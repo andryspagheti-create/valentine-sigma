@@ -3,46 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Heart</title>
+    <title>Valentine ❤️</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to right, #000000, #808080, #000000);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
         }
-        .heart {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 20% 100%, 0% 30%);
+
+        .heart-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
             cursor: pointer;
-            transition: transform 0.5s;
         }
-        .heart:hover {
-            transform: scale(1.1);
+
+        .heart {
+            width: 100%;
+            height: 100%;
+            background: #ff0000;
+            position: relative;
+            transform: rotate(45deg);
+            animation: none;
         }
-        .image {
-            display: none;
+
+        .heart::before,
+        .heart::after {
+            content: '';
             position: absolute;
-            left: -200px;
-            transition: left 1s;
+            width: 100%;
+            height: 100%;
+            background: #ff0000;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -50%;
+            top: 0;
+        }
+
+        .heart.animate {
+            animation: floatUp 1.5s ease-in forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: rotate(45deg) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-500px);
+                opacity: 0;
+            }
+        }
+
+        .image-slide {
+            position: fixed;
+            top: 20px;
+            left: -300px;
+            width: 250px;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            animation: none;
+        }
+
+        .image-slide.animate {
+            animation: slideIn 1.5s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes slideIn {
+            0% {
+                left: -300px;
+            }
+            100% {
+                left: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="heart" onclick="animateHeart();"></div>
-    <img src="your-image-url.jpg" alt="Your Image" class="image" id="slidingImage">
+    <div class="heart-container" onclick="clickHeart(this)">
+        <div class="heart"></div>
+    </div>
+
+    <div class="image-slide" id="imageSlide"></div>
 
     <script>
-        function animateHeart() {
-            const heart = document.querySelector('.heart');
-            const image = document.getElementById('slidingImage');
-            heart.style.transform = 'translateY(-50px)';
-            image.style.display = 'block';  
-            image.style.left = '0';
+        function clickHeart(element) {
+            const heart = element.querySelector('.heart');
+            const imageSlide = document.getElementById('imageSlide');
+            
+            heart.classList.add('animate');
+            imageSlide.classList.add('animate');
+            
+            // Set a background image (you can change the URL)
+            imageSlide.style.backgroundImage = 'url(https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=300&h=300&fit=crop)';
+            
+            // Disable further clicks
+            element.style.pointerEvents = 'none';
         }
     </script>
 </body>
