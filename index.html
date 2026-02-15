@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Heart Button with Two Sliding Images</title>
+<title>Heart Button with Four Sliding Images and Message</title>
 <style>
   body {
     margin: 0;
@@ -10,9 +10,9 @@
     background-color: #f8f8f8;
     overflow: hidden;
     position: relative;
+    font-family: Arial, sans-serif;
   }
-
-  /* Heart Button in the center */
+/* Heart Button in the center */
   .heart-button {
     position: absolute;
     top: 50%;
@@ -24,7 +24,7 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 3; /* top of everything */
+    z-index: 5; /* top of everything */
   }
 
   .heart-button::before,
@@ -56,93 +56,49 @@
     transform: translate(-50%, -50%) rotate(-45deg) scale(0.95);
   }
 
-  /* First Sliding Image (top-left, on top) */
-  .slide-image-top {
-    position: fixed;
-    top: -300px;
-    left: -400px;
-    width: 300px;
-    height: auto;
-    transition: all 0.8s ease;
-    z-index: 2; /* above the second image, below heart */
-  }
+ 
+<div style="text-align: center" id="message">AURORAAA <br>
+  BUON SAN VALENTINO❗❗❗❗❗ <br>
+Spero che dopo questo ce ne siano altri che potremo felicemente festeggiare insieme.
+  ti amo infinitamente❤️❤️❤️</div>
 
-  .slide-image-top.show {
-    top: 20px;
-    left: 20px;
-  }
 
-  /* Second Sliding Image (from left, under first) */
-  .slide-image-bottom {
-    position: fixed;
-    top: 100px;          /* position slightly below first */
-    left: -500px;        /* start fully off-screen left */
-    width: 300px;
-    height: auto;
-    transition: all 1s ease; /* slightly slower for effect */
-    z-index: 1;           /* behind the first image */
-  }
-
-  .slide-image-bottom.show {
-    left: 50px;          /* slide in from left */
-    top: 400px;
-  }
-</style>
-</head>
-<body>
-
-<!-- Heart Button -->
-<button class="heart-button" id="heartBtn"></button>
-
-<!-- First Image (top-left) -->
-<img src="https://via.placeholder.com/300x200.png?text=Top+Image" alt="Top Image" class="slide-image-top" id="slideImgTop">
-
-<!-- Second Image (underneath) -->
-<img src="https://via.placeholder.com/300x200.png?text=Bottom+Image" alt="Bottom Image" class="slide-image-bottom" id="slideImgBottom">
+  /* Sliding images */
+<!-- Audio Player -->
+<div id="audioPlayer">
+  <span>Now Playing: Your Song</span>
+  <audio id="bgAudio" controls>
+    <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/your-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
 
 <script>
-  const button = document.getElementById('heartBtn');
-  const topImg = document.getElementById('slideImgTop');
-  const bottomImg = document.getElementById('slideImgBottom');
+const heartBtn = document.getElementById('heartBtn');
+const topLeft = document.getElementById('topLeft');
+const bottomLeft = document.getElementById('bottomLeft');
+const topRight = document.getElementById('topRight');
+const bottomRight = document.getElementById('bottomRight');
+const message = document.getElementById('message');
+const audioPlayer = document.getElementById('audioPlayer');
+const bgAudio = document.getElementById('bgAudio');
 
-  button.addEventListener('click', () => {
-    // show top image
-    topImg.classList.add('show');
+heartBtn.addEventListener('click', () => {
+  // Slide images
+  topLeft.classList.add('show');
+  setTimeout(()=>{ bottomLeft.classList.add('show'); }, 200);
+  topRight.classList.add('show');
+  setTimeout(()=>{ bottomRight.classList.add('show'); }, 200);
 
-    // show bottom image slightly delayed for effect
-    setTimeout(() => {
-      bottomImg.classList.add('show');
-    }, 200); // 200ms delay
-  });
+  // Show message
+  setTimeout(()=>{ message.classList.add('show'); }, 400);
+
+  // Show audio player and play music
+  setTimeout(()=>{
+    audioPlayer.classList.add('show');
+    bgAudio.play(); // works because user clicked
+  }, 500);
+});
 </script>
-#bgMusic {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-  }
-</style>
-</head>
-<body>
-
-<button class="heart-button" id="heartBtn"></button>
-
-<!-- YouTube background music -->
-<iframe id="bgMusic"
-    src="https://www.youtube.com/embed/nxuzYWcY2O0?autoplay=1&loop=1&playlist=nxuzYWcY2O0"
-    frameborder="0"
-    allow="autoplay">
-</iframe>
-
-<script>
-  // optional: only start music on click to satisfy autoplay rules
-  const musicFrame = document.getElementById('bgMusic');
-  document.getElementById('heartBtn').addEventListener('click', () => {
-    const src = musicFrame.src;
-    musicFrame.src = src; // forcing start after interaction
-  });
-</script>
-
-</body>
 </body>
 </html>
