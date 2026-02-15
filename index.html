@@ -3,116 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine ❤️</title>
+    <title>Heart Animation</title>
     <style>
-        * {
+        body {
+            background-color: gray; /* Changed to solid gray */
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            overflow: hidden;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-
-        .heart-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            cursor: pointer;
         }
 
         .heart {
-            width: 100%;
-            height: 100%;
-            background: #ff0000;
+            width: 100px;
+            height: 100px;
+            background-color: red;
             position: relative;
-            transform: rotate(45deg);
-            animation: none;
+            animation: float 4s ease-in-out infinite;
         }
 
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #ff0000;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -50%;
-            left: 0;
-        }
-
-        .heart::after {
-            left: -50%;
-            top: 0;
-        }
-
-        .heart.animate {
-            animation: floatUp 1.5s ease-in forwards;
-        }
-
-        @keyframes floatUp {
+        @keyframes float {
             0% {
-                transform: rotate(45deg) translateY(0);
-                opacity: 1;
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-100px); /* Floats up */
             }
             100% {
-                transform: rotate(45deg) translateY(-500px);
-                opacity: 0;
-            }
-        }
-
-        .image-slide {
-            position: fixed;
-            top: 20px;
-            left: -300px;
-            width: 250px;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-            animation: none;
-        }
-
-        .image-slide.animate {
-            animation: slideIn 1.5s ease-out forwards;
-            animation-delay: 0.3s;
-        }
-
-        @keyframes slideIn {
-            0% {
-                left: -300px;
-            }
-            100% {
-                left: 20px;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <div class="heart-container" onclick="clickHeart(this)">
-        <div class="heart"></div>
-    </div>
-
-    <div class="image-slide" id="imageSlide"></div>
-
-    <script>
-        function clickHeart(element) {
-            const heart = element.querySelector('.heart');
-            const imageSlide = document.getElementById('imageSlide');
-            
-            heart.classList.add('animate');
-            imageSlide.classList.add('animate');
-            
-            // Set a background image (you can change the URL)
-            imageSlide.style.backgroundImage = 'url(https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=300&h=300&fit=crop)';
-            
-            // Disable further clicks
-            element.style.pointerEvents = 'none';
-        }
-    </script>
+    <div class="heart"></div>
 </body>
 </html>
