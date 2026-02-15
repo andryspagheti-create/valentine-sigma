@@ -3,20 +3,46 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f8f8;
+    background: #f8f8f8;
     margin: 0;
-    font-family: Arial, sans-serif;
 }
 
+/* Heart button */
 .heart-button {
-    font-size: 120px;   /* makes the heart big */
-    background: none;   /* removes button background */
-    border: none;       /* removes border */
-    color: red;         /* makes heart red */
+    position: relative;
+    width: 150px;
+    height: 135px;
+    background-color: red;
+    border: none;
     cursor: pointer;
+    transform: rotate(-45deg);
     transition: transform 0.2s ease;
 }
 
+/* Top left circle */
+.heart-button::before,
+.heart-button::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 135px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* Left circle */
+.heart-button::before {
+    top: -75px;
+    left: 0;
+}
+
+/* Right circle */
+.heart-button::after {
+    left: 75px;
+    top: 0;
+}
+
+/* Click animation */
 .heart-button:active {
-    transform: scale(1.2);  /* grows slightly when clicked */
+    transform: rotate(-45deg) scale(1.1);
 }
