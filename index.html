@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Heart Button with Top-Left Sliding Image</title>
+<title>Heart Button with Two Sliding Images</title>
 <style>
   body {
     margin: 0;
@@ -24,7 +24,7 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 2;
+    z-index: 3; /* top of everything */
   }
 
   .heart-button::before,
@@ -56,34 +56,62 @@
     transform: translate(-50%, -50%) rotate(-45deg) scale(0.95);
   }
 
-  /* Sliding Image from top-left corner */
-  .slide-image {
-    position: fixed;       /* Use fixed so top-left is screen corner */
-    top: -300px;           /* start off the top */
-    left: -400px;          /* start off the left */
+  /* First Sliding Image (top-left, on top) */
+  .slide-image-top {
+    position: fixed;
+    top: -300px;
+    left: -400px;
     width: 300px;
     height: auto;
     transition: all 0.8s ease;
-    z-index: 1;
+    z-index: 2; /* above the second image, below heart */
   }
 
-  .slide-image.show {
-    top: 20px;             /* slide to top-left corner */
+  .slide-image-top.show {
+    top: 20px;
     left: 20px;
+  }
+
+  /* Second Sliding Image (from left, under first) */
+  .slide-image-bottom {
+    position: fixed;
+    top: 100px;          /* position slightly below first */
+    left: -500px;        /* start fully off-screen left */
+    width: 300px;
+    height: auto;
+    transition: all 1s ease; /* slightly slower for effect */
+    z-index: 1;           /* behind the first image */
+  }
+
+  .slide-image-bottom.show {
+    left: 50px;          /* slide in from left */
   }
 </style>
 </head>
 <body>
 
+<!-- Heart Button -->
 <button class="heart-button" id="heartBtn"></button>
-<img src="https://via.placeholder.com/300x200.png?text=Hello!" alt="Sliding Image" class="slide-image" id="slideImg">
+
+<!-- First Image (top-left) -->
+<img src="https://via.placeholder.com/300x200.png?text=Top+Image" alt="Top Image" class="slide-image-top" id="slideImgTop">
+
+<!-- Second Image (underneath) -->
+<img src="https://via.placeholder.com/300x200.png?text=Bottom+Image" alt="Bottom Image" class="slide-image-bottom" id="slideImgBottom">
 
 <script>
   const button = document.getElementById('heartBtn');
-  const image = document.getElementById('slideImg');
+  const topImg = document.getElementById('slideImgTop');
+  const bottomImg = document.getElementById('slideImgBottom');
 
   button.addEventListener('click', () => {
-    image.classList.add('show');
+    // show top image
+    topImg.classList.add('show');
+
+    // show bottom image slightly delayed for effect
+    setTimeout(() => {
+      bottomImg.classList.add('show');
+    }, 200); // 200ms delay
   });
 </script>
 
