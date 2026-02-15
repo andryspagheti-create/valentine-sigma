@@ -2,68 +2,109 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Heart Button with Four Sliding Images and Message</title>
+<title>Heart Button with Music</title>
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background-color: #f8f8f8;
-    overflow: hidden;
-    position: relative;
-    font-family: Arial, sans-serif;
-  }
-/* Heart Button in the center */
-  .heart-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    width: 200px;
-    height: 180px;
-    background-color: red;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 5; /* top of everything */
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
 
-  .heart-button::before,
-  .heart-button::after {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    background-color: red;
-    border-radius: 50%;
-  }
+/* Heart Button */
+.heart-button {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 200px;
+  height: 180px;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 5;
+}
+.heart-button::before,
+.heart-button::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  background-color: red;
+  border-radius: 50%;
+}
+.heart-button::before { top: -100px; left: 0; }
+.heart-button::after { left: 100px; top: 0; }
+.heart-button:hover { transform: translate(-50%, -50%) rotate(-45deg) scale(1.1); background-color: #ff3333; }
+.heart-button:active { transform: translate(-50%, -50%) rotate(-45deg) scale(0.95); }
 
-  .heart-button::before {
-    top: -100px;
-    left: 0;
-  }
+/* Sliding images */
+.slide-image-top-left { position: fixed; top: -300px; left: -400px; width: 300px; transition: all 0.8s ease; z-index: 4; }
+.slide-image-top-left.show { top: 20px; left: 20px; }
+.slide-image-bottom-left { position: fixed; top: 100px; left: -500px; width: 300px; transition: all 1s ease; z-index: 3; }
+.slide-image-bottom-left.show { left: 20px; top: 400px; }
+.slide-image-top-right { position: fixed; top: -300px; right: -400px; width: 300px; transition: all 0.8s ease; z-index: 4; }
+.slide-image-top-right.show { top: 20px; right: 20px; }
+.slide-image-bottom-right { position: fixed; top: 100px; right: -500px; width: 300px; transition: all 1s ease; z-index: 3; }
+.slide-image-bottom-right.show { right: 20px; top: 400px; }
 
-  .heart-button::after {
-    left: 100px;
-    top: 0;
-  }
+/* Message under heart */
+#message {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #ff4444;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 5;
+}
+#message.show { opacity: 1; }
 
-  .heart-button:hover {
-    transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
-    background-color: #ff3333;
-  }
+/* Audio Player */
+#audioPlayer {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 500px;
+  background: linear-gradient(135deg,#ff7e5f,#feb47b);
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+#audioPlayer.show { opacity: 1; }
+#audioPlayer audio { width: 80%; outline: none; }
+</style>
+</head>
+<body>
 
-  .heart-button:active {
-    transform: translate(-50%, -50%) rotate(-45deg) scale(0.95);
-  }
+<button class="heart-button" id="heartBtn"></button>
 
- 
+<img src="https://via.placeholder.com/300x200.png?text=Top+Left" class="slide-image-top-left" id="topLeft">
+<img src="https://via.placeholder.com/300x200.png?text=Bottom+Left" class="slide-image-bottom-left" id="bottomLeft">
+<img src="https://via.placeholder.com/300x200.png?text=Top+Right" class="slide-image-top-right" id="topRight">
+<img src="https://via.placeholder.com/300x200.png?text=Bottom+Right" class="slide-image-bottom-right" id="bottomRight">
+
 <div style="text-align: center" id="message">AURORAAA <br>
   BUON SAN VALENTINO❗❗❗❗❗ <br>
 Spero che dopo questo ce ne siano altri che potremo felicemente festeggiare insieme.
   ti amo infinitamente❤️❤️❤️</div>
 
 
-  /* Sliding images */
 <!-- Audio Player -->
 <div id="audioPlayer">
   <span>Now Playing: Your Song</span>
