@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Big Red Heart Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .heart-button {
+            font-size: 120px;
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .heart-button:active {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="heart-button" onclick="growHeart()">❤️</button>
+
+    <script>
+        function growHeart() {
+            const heart = document.querySelector('.heart-button');
+            heart.style.transform = "scale(1.3)";
+            setTimeout(() => {
+                heart.style.transform = "scale(1)";
+            }, 200);
+        }
+    </script>
+
+</body>
+</html>
