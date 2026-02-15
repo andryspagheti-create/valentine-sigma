@@ -16,7 +16,7 @@ body {
 /* Heart Button */
 .heart-button {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
   width: 200px;
@@ -43,18 +43,18 @@ body {
 
 /* Sliding images */
 .slide-image-top-left { position: fixed; top: -300px; left: -400px; width: 300px; transition: all 0.8s ease; z-index: 4; }
-.slide-image-top-left.show { top: 20px; left: 20px; }
+.slide-image-top-left.show { top: 70px; left: 20px; }
 .slide-image-bottom-left { position: fixed; top: 100px; left: -500px; width: 300px; transition: all 1s ease; z-index: 3; }
-.slide-image-bottom-left.show { left: 20px; top: 400px; }
+.slide-image-bottom-left.show { left: 20px; top: 60%; }
 .slide-image-top-right { position: fixed; top: -300px; right: -400px; width: 300px; transition: all 0.8s ease; z-index: 4; }
-.slide-image-top-right.show { top: 20px; right: 20px; }
+.slide-image-top-right.show { top: 70px; right: 20px; }
 .slide-image-bottom-right { position: fixed; top: 100px; right: -500px; width: 300px; transition: all 1s ease; z-index: 3; }
-.slide-image-bottom-right.show { right: 20px; top: 400px; }
+.slide-image-bottom-right.show { right: 20px; top: 60%; }
 
 /* Message under heart */
 #message {
   position: absolute;
-  top: 65%;
+  top: 75%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
@@ -68,7 +68,7 @@ body {
 /* Audio Player */
 #audioPlayer {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
@@ -94,10 +94,10 @@ body {
 
 <button class="heart-button" id="heartBtn"></button>
 
-<img src="https://via.placeholder.com/300x200.png?text=Top+Left" class="slide-image-top-left" id="topLeft">
-<img src="https://via.placeholder.com/300x200.png?text=Bottom+Left" class="slide-image-bottom-left" id="bottomLeft">
-<img src="https://via.placeholder.com/300x200.png?text=Top+Right" class="slide-image-top-right" id="topRight">
-<img src="https://via.placeholder.com/300x200.png?text=Bottom+Right" class="slide-image-bottom-right" id="bottomRight">
+<img src="https://github.com/andryspagheti-create/valentine-sigma/blob/7cf782c60ad464511b8a23e040664ad4f359d3fa/CAPPELLOSILLY.jpeg" class="slide-image-top-left" id="topLeft">
+<img src="https://github.com/andryspagheti-create/valentine-sigma/blob/7cf782c60ad464511b8a23e040664ad4f359d3fa/bassosini.jpeg" class="slide-image-bottom-left" id="bottomLeft">
+<img src="https://github.com/andryspagheti-create/valentine-sigma/blob/7cf782c60ad464511b8a23e040664ad4f359d3fa/cappellodino.jpeg" class="slide-image-top-right" id="topRight">
+<img src="https://github.com/andryspagheti-create/valentine-sigma/blob/7cf782c60ad464511b8a23e040664ad4f359d3fa/Immagine.jpg" class="slide-image-bottom-right" id="bottomRight">
 
 <div style="text-align: center" id="message">AURORAAA <br>
   BUON SAN VALENTINO❗❗❗❗❗ <br>
@@ -109,7 +109,7 @@ Spero che dopo questo ce ne siano altri che potremo felicemente festeggiare insi
 <div id="audioPlayer">
   <span>Now Playing: Your Song</span>
   <audio id="bgAudio" controls>
-    <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/your-song.mp3" type="audio/mpeg">
+    <source src="https://github.com/andryspagheti-create/valentine-sigma/blob/7cf782c60ad464511b8a23e040664ad4f359d3fa/Childish%20GambinoRedbone%20Official%20Audio.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
