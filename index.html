@@ -4,81 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Love</title>
-    <style>
-        body {
-            background-color: #d3d3d3;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-        }
-        .heart {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 80%, 0% 100%, 0% 35%);
-            transform: translate(-50%, -50%);
-            animation: float 2s infinite;
-        }
-        @keyframes float {
-            0% { transform: translate(-50%, -50%) translateY(0); }
-            50% { transform: translate(-50%, -50%) translateY(-10px); }
-            100% { transform: translate(-50%, -50%) translateY(0); }
-        }
-        .image-container {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .image {
-            position: absolute;
-            width: 200px;
-            opacity: 0;
-            animation-duration: 1s;
-            animation-fill-mode: forwards;
-        }
-        .slide-left {
-            left: -200px;
-            animation-name: slideInLeft;
-        }
-        .slide-right {
-            right: -200px;
-            animation-name: slideInRight;
-        }
-        @keyframes slideInLeft {
-            0% { left: -200px; opacity: 0; }
-            100% { left: 20%; opacity: 1; }
-        }
-        @keyframes slideInRight {
-            0% { right: -200px; opacity: 0; }
-            100% { right: 20%; opacity: 1; }
-        }
-        #message {
-            height: 150vh;
-            padding: 20px;
-            background-color: #fff;
-            overflow-y: scroll;
-            text-align: center;
-            position: relative;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="heart" onclick="this.style.animation='none'; this.style.top='0';"></div>
+    <div class="heart" id="heart"></div>
+    
     <div class="image-container">
-        <img src="image1.jpg" class="image slide-left" style="animation-delay: 0.25s;" alt="Image 1">
-        <img src="image2.jpg" class="image slide-left" style="animation-delay: 0.5s;" alt="Image 2">
-        <img src="image3.jpg" class="image slide-left" style="animation-delay: 0.75s;" alt="Image 3">
-        <img src="image4.jpg" class="image slide-right" style="animation-delay: 0.25s;" alt="Image 4">
-        <img src="image5.jpg" class="image slide-right" style="animation-delay: 0.5s;" alt="Image 5">
-        <img src="image6.jpg" class="image slide-right" style="animation-delay: 0.75s;" alt="Image 6">
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=200&h=200&fit=crop" class="image slide-left" alt="Image 1">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&h=200&fit=crop" class="image slide-left" alt="Image 2">
+        <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=200&h=200&fit=crop" class="image slide-left" alt="Image 3">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" class="image slide-right" alt="Image 4">
+        <img src="https://images.unsplash.com/photo-1502164394585-d99a11b371e5?w=200&h=200&fit=crop" class="image slide-right" alt="Image 5">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" class="image slide-right" alt="Image 6">
     </div>
+    
     <div id="message">
-        <h1>Happy Valentine's Day!</h1>
-        <p>Wishing you a day filled with love and joy.</p>
+        <h1>Happy Valentine's Day! ❤️</h1>
+        <p>Wishing you a day filled with love, joy, and endless moments of happiness together.</p>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
