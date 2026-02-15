@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Heart</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 20% 100%, 0% 30%);
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+        .heart:hover {
+            transform: scale(1.1);
+        }
+        .image {
+            display: none;
+            position: absolute;
+            left: -200px;
+            transition: left 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="animateHeart();"></div>
+    <img src="your-image-url.jpg" alt="Your Image" class="image" id="slidingImage">
+
+    <script>
+        function animateHeart() {
+            const heart = document.querySelector('.heart');
+            const image = document.getElementById('slidingImage');
+            heart.style.transform = 'translateY(-50px)';
+            image.style.display = 'block';  
+            image.style.left = '0';
+        }
+    </script>
+</body>
+</html>
