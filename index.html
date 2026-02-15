@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Heart Button with Sliding Image</title>
+<title>Heart Button with Top-Left Sliding Image</title>
 <style>
   body {
     margin: 0;
@@ -12,7 +12,7 @@
     position: relative;
   }
 
-  /* Heart Button */
+  /* Heart Button in the center */
   .heart-button {
     position: absolute;
     top: 50%;
@@ -56,11 +56,11 @@
     transform: translate(-50%, -50%) rotate(-45deg) scale(0.95);
   }
 
-  /* Sliding Image from top-left */
+  /* Sliding Image from top-left corner */
   .slide-image {
-    position: absolute;
-    top: -300px;   /* start above the screen */
-    left: -400px;  /* start left off-screen */
+    position: fixed;       /* Use fixed so top-left is screen corner */
+    top: -300px;           /* start off the top */
+    left: -400px;          /* start off the left */
     width: 300px;
     height: auto;
     transition: all 0.8s ease;
@@ -68,8 +68,8 @@
   }
 
   .slide-image.show {
-    top: 20px;    /* final position from top */
-    left: 20px;   /* final position from left */
+    top: 20px;             /* slide to top-left corner */
+    left: 20px;
   }
 </style>
 </head>
