@@ -115,6 +115,34 @@
     }, 200); // 200ms delay
   });
 </script>
+#bgMusic {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+</style>
+</head>
+<body>
 
+<button class="heart-button" id="heartBtn"></button>
+
+<!-- YouTube background music -->
+<iframe id="bgMusic"
+    src="https://www.youtube.com/embed/nxuzYWcY2O0?autoplay=1&loop=1&playlist=nxuzYWcY2O0"
+    frameborder="0"
+    allow="autoplay">
+</iframe>
+
+<script>
+  // optional: only start music on click to satisfy autoplay rules
+  const musicFrame = document.getElementById('bgMusic');
+  document.getElementById('heartBtn').addEventListener('click', () => {
+    const src = musicFrame.src;
+    musicFrame.src = src; // forcing start after interaction
+  });
+</script>
+
+</body>
 </body>
 </html>
