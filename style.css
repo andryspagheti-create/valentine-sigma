@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.heart-button {
+    font-size: 120px;   /* makes the heart big */
+    background: none;   /* removes button background */
+    border: none;       /* removes border */
+    color: red;         /* makes heart red */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.heart-button:active {
+    transform: scale(1.2);  /* grows slightly when clicked */
+}
